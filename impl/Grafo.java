@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Queue;
 
+/**
+ * Classe de implementação do Grafo
+ */
 public class Grafo {
     /**
      * Os vertices representam o usuário
@@ -161,4 +164,41 @@ public class Grafo {
         return false;
 
     }
+
+    /**
+     * Método para verificar sugestões deo amizade para um usuário.
+     * @param nomeUsuario Nome do usuário a ser verificado
+     * @return Retorna uma lista de usuários (Vertices) que possuem um grau 2 (amigo do amigo)
+     */
+    public List<Vertice> sugerirAmizades(String nomeUsuario) {
+        Vertice usuario = verificaVertice(nomeUsuario);
+        ArrayList<Vertice> sugestoes = new ArrayList<>();
+
+        if (usuario == null) return sugestoes;
+
+        List<Vertice> amigos = listarAmigosDeUmUsuario(usuario);
+        for (Vertice amigo : amigos) {
+            for (Vertice amigoDoAmigo : listarAmigosDeUmUsuario(amigo)) {
+                if (amigoDoAmigo != usuario && !amigos.contains(amigoDoAmigo) && !sugestoes.contains(amigoDoAmigo)) {
+                    sugestoes.add(amigoDoAmigo);
+                }
+            }
+        }
+
+        return sugestoes;
+    }
+
+    /**
+     * Método que printa o Grafo
+     */
+    public void mostrarGrafo() {
+        for (Vertice usuario : vertices) {
+            System.out.print(usuario.getValor() + " -> ");
+            for (Vertice amigo : listarAmigosDeUmUsuario(usuario)) {
+                System.out.print(amigo.getValor() + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }

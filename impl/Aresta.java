@@ -1,4 +1,9 @@
 package impl;
+
+/**
+ * Classe de implementação do Aresta
+ */
+
 public class Aresta {
     private Vertice origem;
     private Vertice destino;

@@ -1,5 +1,9 @@
 package impl;
 
+/**
+ * Classe de implementação do Vertice
+ */
+
 public class Vertice {
 
     private String valor;
