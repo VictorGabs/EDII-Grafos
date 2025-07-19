@@ -116,7 +116,7 @@ public class Grafo {
      * @return Nome do usuário mais influnte caso haja um e "Nenhum usuário é influente" caso não haja
      */
     public String buscaNomeUsuarioMaisInfluente(){
-        int max = -1;
+        int max = 0;
         Vertice usuarioMaisInfluente = null;
 
         for (Vertice vertice : vertices){
